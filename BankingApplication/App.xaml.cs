@@ -13,7 +13,6 @@ namespace BankingApplication
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 
