@@ -1,8 +1,5 @@
-﻿using BankingApplication.Services;
-using BankingApplication.Views;
-using System;
+﻿using BankingApplication.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace BankingApplication
 {
@@ -13,7 +10,7 @@ namespace BankingApplication
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

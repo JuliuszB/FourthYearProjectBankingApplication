@@ -2,10 +2,14 @@
 
 namespace BankingApplication.Models
 {
-    public class Item
+   
+    public class User
     {
-        public string Id { get; set; }
-        public string Text { get; set; }
-        public string Description { get; set; }
+        public Guid Guid { get; set; }
+        public string fName { get; set; }
+        public string sName { get; set; }
+        public string phoneNo { get; set; }
+        public string password { get; set; }
+
     }
 }
