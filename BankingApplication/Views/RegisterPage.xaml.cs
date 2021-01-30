@@ -10,22 +10,17 @@ using Xamarin.Forms.Xaml;
 namespace BankingApplication.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class RegisterPage : ContentPage
     {
-        public LoginPage()
+        public RegisterPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasBackButton(this, false);
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void Button_Clicked_Register(object sender, EventArgs e)
         {
-            
-            Navigation.PushAsync(new MainPage());
-        }
 
-        private void Button_Clicked_1(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new RegisterPage());
         }
     }
 }
