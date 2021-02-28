@@ -5,6 +5,9 @@
              Title="Register a New Account">
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="Enter your details to register an account" FontSize="Title"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
             <Grid Margin="20,0,20,0" VerticalOptions="CenterAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>

@@ -16,9 +16,9 @@ namespace BankingApplication.Models
         public string phoneNo { get; set; }
         public string password { get; set; }
 
-        public static MobileServiceClient client = new MobileServiceClient("");
+        public static MobileServiceClient client = new MobileServiceClient("HTTP connection goes here :)");
 
-        public async Task<bool> savePerson()
+       /* public async Task<bool> savePerson()
         {
             try
             {
@@ -40,7 +40,7 @@ namespace BankingApplication.Models
         {
             return await client.GetTable<Person>().ToListAsync();
         }
-
+       */
 
 
 

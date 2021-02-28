@@ -7,7 +7,35 @@
     <ContentPage Title="Your Accounts">
         <ContentPage.Content>
             <StackLayout>
-                <Label Text="Hello Tab 1"/>
+                <Label Text="My Bank Accounts" FontSize="Title"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <TableView Intent="Settings">
+                    <TableRoot>
+                        <TableSection Title="Acc. Name : Account 1">
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Funds : 100"
+                                 TextColor="LawnGreen" />
+                                    <Label Text="IBAN : 123456"
+                                 HorizontalOptions="EndAndExpand"
+                                 TextColor="#503026" />
+                                </StackLayout>
+                            </ViewCell>
+                        </TableSection>
+                        <TableSection Title="Acc. Name : Account 2">
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Funds : 100"
+                                 TextColor="LawnGreen" />
+                                    <Label Text="IBAN : 67891234"
+                                 HorizontalOptions="EndAndExpand"
+                                 TextColor="#503026" />
+                                </StackLayout>
+                            </ViewCell>
+                        </TableSection>
+                    </TableRoot>
+                </TableView>
             </StackLayout>
         </ContentPage.Content>
     </ContentPage>
@@ -15,7 +43,24 @@
     <ContentPage Title="Transfer Money" >
         <ContentPage.Content>
             <StackLayout>
-                <Label Text="Hello Tab 2"/>
+                <Label Text="Transfer Money" FontSize="Title"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Label Text="Select an account to send money From :" FontSize="Title"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Picker/>
+                <Label Text="Select an account to send money To :" FontSize="Title"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Picker/>
+                <Label Text="Enter the amount " FontSize="Title"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Entry Placeholder="E.G. 15.35" FontSize="16" x:Name="transferAmount" Keyboard="Numeric"/>
+                <Button Text="Transfer funds" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked_TransferFunds"/>
+
+
             </StackLayout>
         </ContentPage.Content>
     </ContentPage>
@@ -23,7 +68,26 @@
     <ContentPage Title="Add Account" >
         <ContentPage.Content>
             <StackLayout>
-                <Label Text="Hello Tab 3"/>
+                <Label Text="Enter your bank account details to save the account to your profile" FontSize="Title"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Grid Margin="20,0,20,0" VerticalOptions="CenterAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0">
+                        <Entry Placeholder="IBAN" FontSize="16" x:Name="iban"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1">
+                        <Entry Placeholder="Account Name" FontSize="16" x:Name="AccName"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2">
+                        <Button Text="Add Account" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked_AddAccount"/>
+                    </StackLayout>
+                </Grid>
+
             </StackLayout>
         </ContentPage.Content>
     </ContentPage>
