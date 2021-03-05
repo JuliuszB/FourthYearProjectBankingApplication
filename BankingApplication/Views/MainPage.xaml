@@ -4,7 +4,28 @@
              x:Class="BankingApplication.Views.MainPage"
             Title="Main Page">
   <!--Pages can be added as references or inline-->
-    <ContentPage Title="Your Accounts">
+    <ContentPage Title="Your Accounts" BackgroundColor="#ccefff">
+
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <!--Custom Styling-->
+                <Style TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="#2f9ef8"/>
+                    <Setter Property="CornerRadius" Value="50"/>
+                    <Setter Property="TextColor"  Value="#fffff4"/>
+                    <Setter Property="Margin" Value="5"/>
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="TextColor"  Value="#2f9ef8"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="FontAttributes" Value="Italic"/>
+                </Style>
+                <Style TargetType="Entry">
+                    <Setter Property="Margin"  Value="10"/>
+                    <Setter Property="FontAttributes" Value="Italic"/>
+                </Style>
+            </ResourceDictionary>
+        </ContentPage.Resources>
         <ContentPage.Content>
             <StackLayout>
                 <Label Text="My Bank Accounts" FontSize="Title"
@@ -12,25 +33,25 @@
                 HorizontalOptions="CenterAndExpand" />
                 <TableView Intent="Settings">
                     <TableRoot>
-                        <TableSection Title="Acc. Name : Account 1">
+                        <TableSection Title="Account Name : Current" TextColor="Blue">
                             <ViewCell>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Funds : 100"
-                                 TextColor="LawnGreen" />
-                                    <Label Text="IBAN : 123456"
+                                <StackLayout Orientation="Horizontal" BackgroundColor="#e6faff">
+                                    <Label Text="Funds : €1,694"
+                                 TextColor="#3366ff" />
+                                    <Label Text="IBAN : 12345654321"
                                  HorizontalOptions="EndAndExpand"
-                                 TextColor="#503026" />
+                                 TextColor="#3366ff" />
                                 </StackLayout>
                             </ViewCell>
                         </TableSection>
-                        <TableSection Title="Acc. Name : Account 2">
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Funds : 100"
-                                 TextColor="LawnGreen" />
-                                    <Label Text="IBAN : 67891234"
+                        <TableSection Title="Account Name : Savings" TextColor="Blue">
+                            <ViewCell  >
+                                <StackLayout Orientation="Horizontal" BackgroundColor="#e6faff">
+                                    <Label Text="Funds : €1,486"
+                                 TextColor="#3366ff" />
+                                    <Label Text="IBAN : 67891234321"
                                  HorizontalOptions="EndAndExpand"
-                                 TextColor="#503026" />
+                                 TextColor="#3366ff"/>
                                 </StackLayout>
                             </ViewCell>
                         </TableSection>
@@ -39,8 +60,28 @@
             </StackLayout>
         </ContentPage.Content>
     </ContentPage>
-    
-    <ContentPage Title="Transfer Money" >
+
+    <ContentPage Title="Transfer Money" BackgroundColor="#ccefff" >
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <!--Custom Styling-->
+                <Style TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="#2f9ef8"/>
+                    <Setter Property="CornerRadius" Value="50"/>
+                    <Setter Property="TextColor"  Value="#fffff4"/>
+                    <Setter Property="Margin" Value="5"/>
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="TextColor"  Value="#2f9ef8"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="FontAttributes" Value="Italic"/>
+                </Style>
+                <Style TargetType="Entry">
+                    <Setter Property="Margin"  Value="10"/>
+                    <Setter Property="FontAttributes" Value="Italic"/>
+                </Style>
+            </ResourceDictionary>
+        </ContentPage.Resources>
         <ContentPage.Content>
             <StackLayout>
                 <Label Text="Transfer Money" FontSize="Title"
@@ -49,11 +90,21 @@
                 <Label Text="Select an account to send money From :" FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-                <Picker/>
+                <Picker>
+                    <Picker.Items>
+                        <x:String>Current</x:String>
+                        <x:String>Savings</x:String>
+                    </Picker.Items>
+                </Picker>
                 <Label Text="Select an account to send money To :" FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-                <Picker/>
+                <Picker>
+                    <Picker.Items>
+                        <x:String>Current</x:String>
+                        <x:String>Savings</x:String>
+                    </Picker.Items>
+                </Picker>
                 <Label Text="Enter the amount " FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
@@ -64,10 +115,33 @@
             </StackLayout>
         </ContentPage.Content>
     </ContentPage>
-    
-    <ContentPage Title="Add Account" >
+
+    <ContentPage Title="Add Account" BackgroundColor="#ccefff">
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <!--Custom Styling-->
+                <Style TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="#2f9ef8"/>
+                    <Setter Property="CornerRadius" Value="50"/>
+                    <Setter Property="TextColor"  Value="#fffff4"/>
+                    <Setter Property="Margin" Value="5"/>
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="TextColor"  Value="#2f9ef8"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="FontAttributes" Value="Italic"/>
+                </Style>
+                <Style TargetType="Entry">
+                    <Setter Property="Margin"  Value="10"/>
+                    <Setter Property="FontAttributes" Value="Italic"/>
+                </Style>
+            </ResourceDictionary>
+        </ContentPage.Resources>
         <ContentPage.Content>
             <StackLayout>
+                <Label Text="Add a New Bank Account" FontSize="Title"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
                 <Label Text="Enter your bank account details to save the account to your profile" FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />

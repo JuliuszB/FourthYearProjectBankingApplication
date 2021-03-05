@@ -20,7 +20,7 @@ namespace BankingApplication.Views
 
         private void Button_Clicked_Register(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new MainPage());
         }
     }
 }
