@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankingApplication.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,13 @@ namespace BankingApplication.Views
 
         private void Button_Clicked_Register(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainPage());
+            Person personToAdd = new Person();
+            personToAdd.fName = EntryFirstName.Text;
+            personToAdd.sName = EntryLastName.Text;
+            personToAdd.phoneNo = EntryPhoneNo.Text;
+            personToAdd.password = EntryPassword.Text;
+            Person.RunPost(personToAdd);
+           // Navigation.PushAsync(new MainPage());
         }
     }
 }

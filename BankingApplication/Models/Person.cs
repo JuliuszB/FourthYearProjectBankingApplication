@@ -4,7 +4,10 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices;
 using System.Text;
 using SQLite;
-
+using System.Net.Http;
+using System.IO;
+using System.Runtime.Serialization.Json;
+using Newtonsoft.Json;
 namespace BankingApplication.Models
 {
     public class Person
@@ -16,32 +19,31 @@ namespace BankingApplication.Models
         public string phoneNo { get; set; }
         public string password { get; set; }
 
-        public static MobileServiceClient client = new MobileServiceClient("HTTP connection goes here :)");
+        //public static MobileServiceClient client = new MobileServiceClient("HTTP connection goes here :)");
 
-       /* public async Task<bool> savePerson()
+        private static readonly HttpClient httpClient = new HttpClient();
+        private static readonly string baseURI = "https://10.0.2.2:44380/api/";
+
+        
+
+             
+       
+        //POST method
+       public static async Task RunPost(Person personToAdd)
         {
             try
             {
-                await client.GetTable<Person>().InsertAsync(this);
-                return true;
-            }
-            catch (MobileServiceInvalidOperationException msioe)
-            {
-                var response = await msioe.Response.Content.ReadAsStringAsync();
-                return false;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
+                var result = await httpClient.PostAsJsonAsync(baseURI+"PeopleController", personToAdd);
 
-        public static async Task<List<Person>> ReadPerson()
-        {
-            return await client.GetTable<Person>().ToListAsync();
-        }
-       */
+                result.EnsureSuccessStatusCode();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
+        }
+     
 
 
 
