@@ -2,9 +2,34 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BankingApplication.Views.RegisterPage"
-             Title="Register a New Account">
+             Title="Register a New Account"
+             BackgroundColor="#ccefff">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--Custom Styling-->
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#2f9ef8"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="TextColor"  Value="#fffff4"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="TextColor"  Value="#2f9ef8"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="FontAttributes" Value="Italic"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="Margin"  Value="10"/>
+                <Setter Property="FontAttributes" Value="Italic"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="Enter your details to register an account" FontSize="Title"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
             <Grid Margin="20,0,20,0" VerticalOptions="CenterAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>

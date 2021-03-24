@@ -17,5 +17,13 @@ namespace BankingApplication.Views
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
         }
+        private void Button_Clicked_AddAccount(object sender, EventArgs e)
+        {
+
+        }
+        private void Button_Clicked_TransferFunds(object sender, EventArgs e)
+        {
+
+        }
     }
 }

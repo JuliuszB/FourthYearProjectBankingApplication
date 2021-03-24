@@ -2,16 +2,42 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BankingApplication.Views.LoginPage"
-             Title="Login Page">
+             Title="Login Page"
+             BackgroundColor="#ccefff">
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="Welcome to Bank App" FontSize="Title"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" />
             <Label Text="Enter your account details to log in" FontSize="Title"
                 VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" />
-            <Entry Placeholder="Phone Number" ClearButtonVisibility="WhileEditing" />
+            <Entry Placeholder="Phone Number" ClearButtonVisibility="WhileEditing"  />
             <Entry Placeholder="Password" IsPassword="True" ClearButtonVisibility="WhileEditing" />
             <Button Text="Log In" VerticalOptions="Start" HorizontalOptions="Center" Clicked="Button_Clicked" />
             <Button Text="Register" VerticalOptions="Start" HorizontalOptions="Center" Clicked="Button_Clicked_1" />
         </StackLayout>
     </ContentPage.Content>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--Custom Styling-->
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#2f9ef8"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="TextColor"  Value="#fffff4"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="TextColor"  Value="#2f9ef8"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="FontAttributes" Value="Italic"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="Margin"  Value="10"/>
+                <Setter Property="FontAttributes" Value="Italic"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
 </ContentPage>
