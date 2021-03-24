@@ -12,8 +12,7 @@ namespace BankingApplication.Models
 {
     public class Person
     {
-        [PrimaryKey, AutoIncrement]
-        public int ID { get; set; }
+       
         public string fName { get; set; }
         public string sName { get; set; }
         public string phoneNo { get; set; }
@@ -22,7 +21,7 @@ namespace BankingApplication.Models
         //public static MobileServiceClient client = new MobileServiceClient("HTTP connection goes here :)");
 
         //private static readonly HttpClient httpClient = new HttpClient();
-        private static readonly string baseURI = "https://10.0.2.2:44380/api/";
+        private static readonly string baseURI = "https://10.0.2.2:5001/api/";
 
         // This method must be in a class in a platform project, even if
         // the HttpClient object is constructed in a shared project.
