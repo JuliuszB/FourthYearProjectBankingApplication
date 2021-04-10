@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankingApplication.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,12 @@ namespace BankingApplication.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : TabbedPage
     {
-        public MainPage()
+        public MainPage(Person fetchedUser)
         {
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
+             Person user = fetchedUser;
+            nameLabel.Text = fetchedUser.fName;
         }
         private void Button_Clicked_AddAccount(object sender, EventArgs e)
         {
@@ -23,7 +26,7 @@ namespace BankingApplication.Views
         }
         private void Button_Clicked_TransferFunds(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

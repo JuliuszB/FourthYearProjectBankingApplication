@@ -28,6 +28,9 @@
         </ContentPage.Resources>
         <ContentPage.Content>
             <StackLayout>
+                <Label x:Name="nameLabel" Text="" FontSize="Title"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
                 <Label Text="My Bank Accounts" FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
