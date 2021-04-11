@@ -51,6 +51,9 @@
                     <Entry Placeholder="Password" IsPassword="True" FontSize="16" x:Name="EntryPassword"/>
                 </StackLayout>
                 <StackLayout Grid.Row="4">
+                    <Entry Placeholder="Email"  FontSize="16" x:Name="EntryEmail"/>
+                </StackLayout>
+                <StackLayout Grid.Row="5">
                     <Button Text="Register" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked_Register"/>
                 </StackLayout>
             </Grid>
