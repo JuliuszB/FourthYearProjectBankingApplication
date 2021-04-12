@@ -4,6 +4,8 @@
              x:Class="BankingApplication.Views.MainPage"
             Title="Main Page">
     
+    
+    
   <!--Pages can be added as references or inline-->
     <ContentPage Title="Your Accounts"  BackgroundColor="#ccefff">
 
