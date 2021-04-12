@@ -26,8 +26,10 @@ namespace BankingApplication.Views
             personToAdd.sName = EntryLastName.Text;
             personToAdd.phoneNo = EntryPhoneNo.Text;
             personToAdd.password = EntryPassword.Text;
+            personToAdd.email = EntryEmail.Text;
+            personToAdd.isLoggedIn = "True";
             Person.RunPost(personToAdd);
-           // Navigation.PushAsync(new MainPage());
+            Navigation.PushAsync(new MainPage(personToAdd));
         }
     }
 }

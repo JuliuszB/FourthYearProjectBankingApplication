@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BankingApplication.Views.MainPage"
             Title="Main Page">
+    
   <!--Pages can be added as references or inline-->
-    <ContentPage Title="Your Accounts" BackgroundColor="#ccefff">
+    <ContentPage Title="Your Accounts"  BackgroundColor="#ccefff">
 
         <ContentPage.Resources>
             <ResourceDictionary>
@@ -28,6 +29,10 @@
         </ContentPage.Resources>
         <ContentPage.Content>
             <StackLayout>
+                <Button Text="Logout" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked_Logout"/>
+                <Label x:Name="nameLabel" Text="" FontSize="Title"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
                 <Label Text="My Bank Accounts" FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
@@ -60,6 +65,8 @@
             </StackLayout>
         </ContentPage.Content>
     </ContentPage>
+
+    
 
     <ContentPage Title="Transfer Money" BackgroundColor="#ccefff" >
         <ContentPage.Resources>
@@ -150,14 +157,18 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <StackLayout Grid.Row="0">
                         <Entry Placeholder="IBAN" FontSize="16" x:Name="iban"/>
                     </StackLayout>
                     <StackLayout Grid.Row="1">
-                        <Entry Placeholder="Account Name" FontSize="16" x:Name="AccName"/>
+                        <Entry Placeholder="Account Number" FontSize="16" x:Name="AccNum"/>
                     </StackLayout>
                     <StackLayout Grid.Row="2">
+                        <Entry Placeholder="Account Name" FontSize="16" x:Name="AccName"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3">
                         <Button Text="Add Account" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked_AddAccount"/>
                     </StackLayout>
                 </Grid>
