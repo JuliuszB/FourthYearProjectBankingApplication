@@ -28,6 +28,8 @@ namespace BankingApplication.Views
             {
                 if (fetchedUser.password == UsertoLogIn.password && fetchedUser.phoneNo == UsertoLogIn.phoneNo)
                 {
+                    fetchedUser.setIsLoggedIn("True");
+                    Person.RunPut(fetchedUser);
                     Navigation.PushAsync(new MainPage(fetchedUser));
                 }
                 
