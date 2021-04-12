@@ -13,13 +13,17 @@ namespace BankingApplication.Models
 {
     public class Person
     {
-       
+        public int id { get; set; }
         public string fName { get; set; }
         public string sName { get; set; }
         public string phoneNo { get; set; }
         public string password { get; set; }
         public string isLoggedIn { get; set; }
         public string email { get; set; }
+        public void setIsLoggedIn(string input)
+        {
+            this.isLoggedIn = input;
+        }
 
         //public static MobileServiceClient client = new MobileServiceClient("HTTP connection goes here :)");
 
@@ -53,6 +57,21 @@ namespace BankingApplication.Models
             try
             {
                 var result = await httpClient.PostAsJsonAsync(baseURI+"PeopleController", personToAdd);
+
+                result.EnsureSuccessStatusCode();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+        }
+        //PUT UPDATE method
+        public static async Task RunPut(Person personToUpdate)
+        {
+            try
+            {
+                var result = await httpClient.PutAsJsonAsync(baseURI + "PeopleController/put", personToUpdate);
 
                 result.EnsureSuccessStatusCode();
             }

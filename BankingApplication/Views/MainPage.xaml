@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BankingApplication.Views.MainPage"
             Title="Main Page">
+    
   <!--Pages can be added as references or inline-->
-    <ContentPage Title="Your Accounts" BackgroundColor="#ccefff">
+    <ContentPage Title="Your Accounts"  BackgroundColor="#ccefff">
 
         <ContentPage.Resources>
             <ResourceDictionary>
@@ -28,6 +29,7 @@
         </ContentPage.Resources>
         <ContentPage.Content>
             <StackLayout>
+                <Button Text="Logout" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked_Logout"/>
                 <Label x:Name="nameLabel" Text="" FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
@@ -63,6 +65,8 @@
             </StackLayout>
         </ContentPage.Content>
     </ContentPage>
+
+    
 
     <ContentPage Title="Transfer Money" BackgroundColor="#ccefff" >
         <ContentPage.Resources>

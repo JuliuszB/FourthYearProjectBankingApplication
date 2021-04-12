@@ -35,5 +35,25 @@ namespace BankingApplication.Views
         {
             
         }
+
+        private async void Button_Clicked_Logout(object sender, EventArgs e)
+        {
+
+            try
+            {
+                   
+                sessionUser.isLoggedIn = "False";
+                    Person.RunPut(sessionUser);
+                    await DisplayAlert("Logged Out Successfully", "Goodbye ! " + sessionUser.fName, "Leave");
+                    Navigation.PushAsync(new LoginPage());
+
+            }
+            catch (NullReferenceException)
+            {
+                await DisplayAlert("Error", "session expired, please log in again", "OK");
+                Navigation.PushAsync(new LoginPage());
+            }
+
+        }
     }
 }
