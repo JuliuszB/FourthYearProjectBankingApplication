@@ -56,7 +56,10 @@ namespace BankingApplication.Views
             BankAccount.RunBankPut(detailsToPass);
 
             List<BankAccount> updatedAccounts = await BankAccount.getAllAccounts(sessionUser.phoneNo);
-            Navigation.PushAsync(new MainPage(sessionUser, updatedAccounts));
+            Person.loginCredentials creds = new Person.loginCredentials(sessionUser.phoneNo, sessionUser.password);
+            Person updatedUser = await Person.getUser(creds);
+            List<BankAccount> useraccounts = await BankAccount.getAllAccounts(updatedUser.phoneNo);
+            await Navigation.PushAsync(new MainPage(updatedUser, updatedAccounts));
         }
 
         private async void Button_Clicked_Logout(object sender, EventArgs e)
