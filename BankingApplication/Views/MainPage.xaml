@@ -32,38 +32,46 @@
         <ContentPage.Content>
             <StackLayout>
                 <Button Text="Logout" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked_Logout"/>
-                <Label x:Name="nameLabel" Text="" FontSize="Title"
+                <Label TextColor="#2f9ef8" x:Name="nameLabel" Text="" FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-                <Label Text="My Bank Accounts" FontSize="Title"
+                <Label TextColor="#2f9ef8" Text="My Bank Accounts" FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-                <TableView Intent="Settings">
-                    <TableRoot>
-                        <TableSection Title="Account Name : Current" TextColor="Blue">
+
+                <ListView x:Name="BankAccountListView" ItemsSource="{Binding useraccounts}"
+                          HasUnevenRows="True"
+                          BackgroundColor="#ccefff"
+                          SeparatorVisibility="None"
+                          HorizontalOptions="FillAndExpand"
+                          VerticalOptions="FillAndExpand">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
                             <ViewCell>
-                                <StackLayout Orientation="Horizontal" BackgroundColor="#e6faff">
-                                    <Label Text="Funds : €1,694"
-                                 TextColor="#3366ff" />
-                                    <Label Text="IBAN : 12345654321"
-                                 HorizontalOptions="EndAndExpand"
-                                 TextColor="#3366ff" />
+                                <StackLayout Margin="6,4,6,4"
+                                             BackgroundColor="lightBlue">
+                                    
+                                    <Label Text="{Binding accountName}"
+                                           Margin="8"
+                                           FontAttributes="Bold"
+                                           FontSize="Medium" />
+                                   
+                                    <Label TextColor="ForestGreen" Text="{Binding balance}"
+                                           Margin="8"
+                                           FontAttributes="Bold"
+                                           FontSize="Title" />
+                                    <Label Text="{Binding iban}"
+                                           Margin="8"
+                                           FontAttributes="Bold"
+                                           FontSize="Large" />
+                                    
                                 </StackLayout>
                             </ViewCell>
-                        </TableSection>
-                        <TableSection Title="Account Name : Savings" TextColor="Blue">
-                            <ViewCell  >
-                                <StackLayout Orientation="Horizontal" BackgroundColor="#e6faff">
-                                    <Label Text="Funds : €1,486"
-                                 TextColor="#3366ff" />
-                                    <Label Text="IBAN : 67891234321"
-                                 HorizontalOptions="EndAndExpand"
-                                 TextColor="#3366ff"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </TableSection>
-                    </TableRoot>
-                </TableView>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+                
             </StackLayout>
         </ContentPage.Content>
     </ContentPage>
@@ -99,21 +107,11 @@
                 <Label Text="Select an account to send money From :" FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-                <Picker>
-                    <Picker.Items>
-                        <x:String>Current</x:String>
-                        <x:String>Savings</x:String>
-                    </Picker.Items>
-                </Picker>
+                <!--<Picker x:Name="account Picker" ItemsSource="{Binding pickerSource}"/>-->
                 <Label Text="Select an account to send money To :" FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-                <Picker>
-                    <Picker.Items>
-                        <x:String>Current</x:String>
-                        <x:String>Savings</x:String>
-                    </Picker.Items>
-                </Picker>
+                <Entry x:Name="ibanInput" Placeholder="E.G. AIBK321675 " FontSize="16" Keyboard="Default"/>
                 <Label Text="Enter the amount " FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />

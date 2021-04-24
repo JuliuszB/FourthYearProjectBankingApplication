@@ -24,13 +24,15 @@ namespace BankingApplication.Views
         {
             loginCredentials UsertoLogIn = new loginCredentials(LogInPhoneNo.Text, LogInPass.Text);
             Person fetchedUser = await Person.getUser(UsertoLogIn);
+             List<BankAccount> useraccounts = await BankAccount.getAllAccounts(fetchedUser.phoneNo);
             try
             {
                 if (fetchedUser.password == UsertoLogIn.password && fetchedUser.phoneNo == UsertoLogIn.phoneNo)
                 {
                     fetchedUser.setIsLoggedIn("True");
                     Person.RunPut(fetchedUser);
-                    Navigation.PushAsync(new MainPage(fetchedUser));
+                   
+                    Navigation.PushAsync(new MainPage(fetchedUser, useraccounts));
                 }
                 
             }

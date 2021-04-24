@@ -1,10 +1,9 @@
 ﻿using BankingApplication.Models;
 using System;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,12 +13,24 @@ namespace BankingApplication.Views
     public partial class MainPage : TabbedPage
     {
         Person sessionUser = new Person();
-        public MainPage(Person fetchedUser)
+        //List<BankAccount> userAccounts = new List<BankAccount>();
+        public List<string> pickerSource { get; set; }
+        public List<string> accountNames = new List<string>();
+        public MainPage(Person fetchedUser,List<BankAccount> useraccounts)
         {
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
             sessionUser = fetchedUser;
             nameLabel.Text = fetchedUser.fName;
+            BindingContext = useraccounts;
+            BankAccountListView.ItemsSource = useraccounts;
+            foreach (BankAccount acc in useraccounts)
+            {
+                accountNames.Add(acc.accountName);
+            }
+            pickerSource = accountNames;
+
+
         }
         private void Button_Clicked_AddAccount(object sender, EventArgs e)
         {
@@ -27,7 +38,7 @@ namespace BankingApplication.Views
             accountToAdd.accountName = AccName.Text ;
             accountToAdd.accountNumber = AccNum.Text ;
             accountToAdd.accountOwner = sessionUser.phoneNo;
-            accountToAdd.IBAN = iban.Text;
+            accountToAdd.iban = iban.Text;
             accountToAdd.balance = 0.0;
             BankAccount.RunPost(accountToAdd);
         }

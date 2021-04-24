@@ -50,6 +50,18 @@ namespace ProjectAPI.Controllers
 
         }
 
+        [HttpPost("getAllAccounts")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> GetByNumber([FromBody]string phoneNo)
+        {
+
+
+            var accounts = _dbContext.BankAccount.Where(a => a.accountOwner == phoneNo);
+            return Ok(accounts);
+
+        }
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

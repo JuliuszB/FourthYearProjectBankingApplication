@@ -29,7 +29,8 @@ namespace BankingApplication.Views
             personToAdd.email = EntryEmail.Text;
             personToAdd.isLoggedIn = "True";
             Person.RunPost(personToAdd);
-            Navigation.PushAsync(new MainPage(personToAdd));
+            List<BankAccount> useraccounts = new List<BankAccount>();
+            Navigation.PushAsync(new MainPage(personToAdd, useraccounts));
         }
     }
 }

@@ -13,13 +13,15 @@ using System.Net.Http.Json;
 
 namespace BankingApplication.Models
 {
-    class BankAccount
+   public class BankAccount
     {
         public string accountOwner { get; set; }
         public string accountName { get; set; }
         public string accountNumber { get; set; }
         public double balance { get; set; }
-        public string IBAN { get; set; }
+
+        [JsonProperty("iban")]
+        public string iban { get; set; }
 
         //Base URI
         private static readonly string baseURI = "https://10.0.2.2:5001/api/";
@@ -59,12 +61,12 @@ namespace BankingApplication.Models
         }
 
 
-        //Get a single user by phone number and password
-        public static async Task<BankAccount> getAccount(string IBAN )
+        //Get a single account  by iban
+        public static async Task<BankAccount> getAccount(string iban )
         {
             try
             {
-               var result = await httpClient.PostAsJsonAsync(baseURI + "BankController/getAccount",IBAN );
+               var result = await httpClient.PostAsJsonAsync(baseURI + "BankController/getAccount",iban );
                 var accountData = await result.Content.ReadAsStreamAsync();
                 var fetchedAccount = await System.Text.Json.JsonSerializer.DeserializeAsync<BankAccount>(accountData);
                 result.EnsureSuccessStatusCode();
@@ -81,10 +83,10 @@ namespace BankingApplication.Models
         {
             try
             {
-                var result = await httpClient.PostAsJsonAsync(baseURI + "BankController/getAllAccounts", accountOwner);
-                var accountData = await result.Content.ReadAsStreamAsync();
-                var fetchedAccounts = await System.Text.Json.JsonSerializer.DeserializeAsync<List<BankAccount>>(accountData);
-                result.EnsureSuccessStatusCode();
+                var result =  await httpClient.PostAsJsonAsync(baseURI + "BankController/getAllAccounts", accountOwner);
+                var accountData =  await result.Content.ReadAsStreamAsync();
+                List<BankAccount> fetchedAccounts = await System.Text.Json.JsonSerializer.DeserializeAsync<List<BankAccount>>(accountData);
+                //result.EnsureSuccessStatusCode();
                 return fetchedAccounts;
             }
             catch (Exception e)
