@@ -107,8 +107,8 @@
                 <Label Text="Select an account to send money From :" FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-                <!--<Picker x:Name="account Picker" ItemsSource="{Binding pickerSource}"/>-->
-                <Label Text="Select an account to send money To :" FontSize="Title"
+                <Picker Title="Select Account" x:Name="accountPicker"  ItemsSource="{Binding pickerSource}"/>
+                    <Label Text="Select an account to send money To :" FontSize="Title"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
                 <Entry x:Name="ibanInput" Placeholder="E.G. AIBK321675 " FontSize="16" Keyboard="Default"/>

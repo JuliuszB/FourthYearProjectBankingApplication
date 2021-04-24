@@ -28,8 +28,8 @@ namespace BankingApplication.Views
             {
                 accountNames.Add(acc.accountName);
             }
-            pickerSource = accountNames;
-
+           // var pickerSource = new Picker { Title = "Select Account" };
+            accountPicker.ItemsSource = accountNames;
 
         }
         private void Button_Clicked_AddAccount(object sender, EventArgs e)
