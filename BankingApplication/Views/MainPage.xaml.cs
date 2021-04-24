@@ -44,7 +44,7 @@ namespace BankingApplication.Views
             accountToAdd.balance = 0.0;
             BankAccount.RunPost(accountToAdd);
         }
-        private void Button_Clicked_TransferFunds(object sender, EventArgs e)
+        private async void Button_Clicked_TransferFunds(object sender, EventArgs e)
         {
 
             string selectedaccName = accountPicker.Items[accountPicker.SelectedIndex];
@@ -54,7 +54,9 @@ namespace BankingApplication.Views
             double amountToSend = Convert.ToDouble(transferAmount.Text);
             BankAccount.BankPutDetails detailsToPass = new BankAccount.BankPutDetails(ibanFROM, ibanToSendTo, amountToSend);
             BankAccount.RunBankPut(detailsToPass);
-            Navigation.PushAsync(new MainPage(sessionUser, sessionAccounts));
+
+            List<BankAccount> updatedAccounts = await BankAccount.getAllAccounts(sessionUser.phoneNo);
+            Navigation.PushAsync(new MainPage(sessionUser, updatedAccounts));
         }
 
         private async void Button_Clicked_Logout(object sender, EventArgs e)

@@ -63,7 +63,7 @@
                                     <Label Text="{Binding iban}"
                                            Margin="8"
                                            FontAttributes="Bold"
-                                           FontSize="Large" />
+                                           FontSize="Medium" />
                                     
                                 </StackLayout>
                             </ViewCell>

@@ -20,7 +20,7 @@ namespace BankingApplication.Views
         }
 
         //Login button - logs a user in if the account exists
-        private async void Button_Clicked(object sender, EventArgs e)
+        public async void Button_Clicked(object sender, EventArgs e)
         {
             loginCredentials UsertoLogIn = new loginCredentials(LogInPhoneNo.Text, LogInPass.Text);
             Person fetchedUser = await Person.getUser(UsertoLogIn);
