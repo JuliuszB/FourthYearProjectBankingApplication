@@ -13,6 +13,12 @@ namespace ProjectAPI.Controllers
     {
 
         private readonly BankContext _dbContext;
+        public class BankPutDetails
+        {
+            public string ibanFROM { get; set; }
+            public string ibanTO { get; set; }
+            public double amount { get; set; }
+        }
 
         public BankController(BankContext dbContext)
         {
@@ -82,5 +88,35 @@ namespace ProjectAPI.Controllers
             }
 
         }
+
+        [HttpPut("put")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> update([FromBody] BankPutDetails deets)
+        {
+            string ibanFROM = deets.ibanFROM;
+            string ibanTO = deets.ibanTO;
+            double amount = deets.amount;
+            try
+            {
+                var transferFromAccount = _dbContext.BankAccount.FirstOrDefault(b => b.IBAN == ibanFROM);
+                transferFromAccount.withdraw(transferFromAccount, amount);
+                _dbContext.BankAccount.Update(transferFromAccount);
+                await _dbContext.SaveChangesAsync(); 
+
+                var transferToAccount = _dbContext.BankAccount.FirstOrDefault(b => b.IBAN == ibanTO);
+                transferToAccount.deposit(transferToAccount, amount);
+                _dbContext.BankAccount.Update(transferToAccount);
+                await _dbContext.SaveChangesAsync(); 
+                return Ok();
+            }
+
+            catch (Exception e)
+            {
+                return StatusCode(500);
+            }
+
+        }
+
     }
 }

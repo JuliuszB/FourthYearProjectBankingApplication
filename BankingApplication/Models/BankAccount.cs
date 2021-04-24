@@ -95,5 +95,36 @@ namespace BankingApplication.Models
                 return null;
             }
         }
+
+        public class BankPutDetails
+        {
+            public BankPutDetails(string accountFROMIn, string ibanTOIn, double amountIn)
+            {
+                ibanFROM = accountFROMIn;
+                ibanTO = ibanTOIn;
+                amount = amountIn;
+            }
+            public string ibanFROM { get; set; }
+            public string ibanTO { get; set; }
+            public double amount { get; set; }
+        }
+
+        //PUT UPDATE method
+        public static async Task RunBankPut(BankPutDetails passedDetails )
+        {
+            try
+            {
+                var result = await httpClient.PutAsJsonAsync(baseURI + "BankController/put", passedDetails);
+
+                result.EnsureSuccessStatusCode();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+        }
+
+
     }
 }

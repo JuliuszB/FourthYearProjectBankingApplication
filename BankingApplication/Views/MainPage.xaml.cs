@@ -13,24 +13,26 @@ namespace BankingApplication.Views
     public partial class MainPage : TabbedPage
     {
         Person sessionUser = new Person();
-        //List<BankAccount> userAccounts = new List<BankAccount>();
+       List<BankAccount> sessionAccounts = new List<BankAccount>();
         public List<string> pickerSource { get; set; }
         public List<string> accountNames = new List<string>();
+        public List<BankAccount> accounts = new List<BankAccount>();
         public MainPage(Person fetchedUser,List<BankAccount> useraccounts)
         {
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
             sessionUser = fetchedUser;
+            sessionAccounts = useraccounts;
             nameLabel.Text = fetchedUser.fName;
             BindingContext = useraccounts;
             BankAccountListView.ItemsSource = useraccounts;
             foreach (BankAccount acc in useraccounts)
             {
                 accountNames.Add(acc.accountName);
+                accounts.Add(acc);
             }
-           // var pickerSource = new Picker { Title = "Select Account" };
             accountPicker.ItemsSource = accountNames;
-
+            
         }
         private void Button_Clicked_AddAccount(object sender, EventArgs e)
         {
@@ -44,7 +46,15 @@ namespace BankingApplication.Views
         }
         private void Button_Clicked_TransferFunds(object sender, EventArgs e)
         {
-            
+
+            string selectedaccName = accountPicker.Items[accountPicker.SelectedIndex];
+            BankAccount ibanFromAcc = accounts.FirstOrDefault(a => a.accountName == selectedaccName);
+            string ibanFROM = ibanFromAcc.iban;
+            string ibanToSendTo = ibanInput.Text;
+            double amountToSend = Convert.ToDouble(transferAmount.Text);
+            BankAccount.BankPutDetails detailsToPass = new BankAccount.BankPutDetails(ibanFROM, ibanToSendTo, amountToSend);
+            BankAccount.RunBankPut(detailsToPass);
+            Navigation.PushAsync(new MainPage(sessionUser, sessionAccounts));
         }
 
         private async void Button_Clicked_Logout(object sender, EventArgs e)
