@@ -34,7 +34,7 @@ namespace BankingApplication.Views
             accountPicker.ItemsSource = accountNames;
             
         }
-        private void Button_Clicked_AddAccount(object sender, EventArgs e)
+        private async void Button_Clicked_AddAccount(object sender, EventArgs e)
         {
             BankAccount accountToAdd = new BankAccount();
             accountToAdd.accountName = AccName.Text ;
@@ -43,6 +43,11 @@ namespace BankingApplication.Views
             accountToAdd.iban = iban.Text;
             accountToAdd.balance = 0.0;
             BankAccount.RunPost(accountToAdd);
+            List<BankAccount> updatedAccounts = await BankAccount.getAllAccounts(sessionUser.phoneNo);
+            Person.loginCredentials creds = new Person.loginCredentials(sessionUser.phoneNo, sessionUser.password);
+            Person updatedUser = await Person.getUser(creds);
+            List<BankAccount> useraccounts = await BankAccount.getAllAccounts(updatedUser.phoneNo);
+            await Navigation.PushAsync(new MainPage(updatedUser, updatedAccounts));
         }
         private async void Button_Clicked_TransferFunds(object sender, EventArgs e)
         {
